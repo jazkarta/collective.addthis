@@ -41,9 +41,15 @@ class AddThisViewlet(common.ViewletBase):
         addthis_config = {'ui_click': True,
                           'ui_hover_direction': 1,
                           'ui_language': self.language()}
+
         if HAS_GA:
-            analytics_tool = getToolByName(self.context, "portal_analytics")
-            account_id = getattr(analytics_tool, 'tracking_web_property', None)
+
+            analytics_tool = getToolByName(self.context, "portal_analytics",None)
+            account_id = None
+
+            if analytics_tool is not None:
+                account_id = getattr(analytics_tool, 'tracking_web_property', None)
+
             if account_id is not None:
                 addthis_config['data_ga_property']= account_id
                 addthis_config['data_ga_social'] = True
