@@ -4,7 +4,7 @@ Changelog
 1.2 (unreleased)
 ----------------
 
-- Nothing changed yet
+- Add french translation. [toutpt]
 
 1.1.1 Released 2011-08-18
 -------------------------
