@@ -5,6 +5,9 @@ Changelog
 ----------------
 
 - Add french translation. [toutpt]
+- Add collective.googleanalytics integration following 
+  http://www.addthis.com/help/google-analytics-integration#.To83N5zOifZ
+  [toutpt]
 
 1.1.1 Released 2011-08-18
 -------------------------
