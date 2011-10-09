@@ -17,7 +17,7 @@ setup(name='collective.addthis',
       keywords='AddThis',
       author='Jukka Ojaniemi',
       author_email='jukka.ojaniemi@jyu.fi',
-      url='https://github.com/pingviini/collective.addthis',
+      url='https://github.com/collective/collective.addthis',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['collective'],
@@ -27,6 +27,9 @@ setup(name='collective.addthis',
           'setuptools',
           # -*- Extra requirements: -*-
       ],
+      extras_require={
+          'test': ['plone.app.testing', 'collective.googleanalytics'],
+      },
       entry_points="""
       # -*- Entry points: -*-
       [z3c.autoinclude.plugin]

@@ -4,6 +4,7 @@ Changelog
 1.2 (unreleased)
 ----------------
 
+- Added tests [pingviini]
 - Add french translation. [toutpt]
 - Add collective.googleanalytics integration following 
   http://www.addthis.com/help/google-analytics-integration#.To83N5zOifZ

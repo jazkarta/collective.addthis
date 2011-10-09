@@ -63,4 +63,3 @@ class AddThisControlPanel(ControlPanelForm):
     form_name = _(u"AddThis settings")
     label = _(u"AddThis settings")
     description = _(u"Here you can customize Addthis settings")
-

@@ -1,44 +1,30 @@
-import unittest
-
-from zope.testing import doctestunit
-from zope.component import testing
-from Testing import ZopeTestCase as ztc
-
-from Products.Five import zcml
-from Products.Five import fiveconfigure
-from Products.PloneTestCase import PloneTestCase as ptc
-from Products.PloneTestCase.layer import PloneSite
-from Products.PloneTestCase.layer import onsetup
-
-@onsetup
-def setup_product():
-    """Set up the package and its dependencies.
-    
-    The @onsetup decorator causes the execution of this body to be deferred
-    until the setup of the Plone site testing layer. We could have created our
-    own layer, but this is the easiest way for Plone integration tests.
-    """
-    
-    fiveconfigure.debug_mode = True
-    import collective.addthis
-    zcml.load_config('configure.zcml', collective.addthis)
-    fiveconfigure.debug_mode = False
-        
-    ztc.installPackage('collective.addthis')
-    
-
-setup_product()
-ptc.setupPloneSite(products=['collective.addthis'])
+from plone.app.testing import PloneSandboxLayer
+from plone.app.testing import applyProfile
+from plone.app.testing import PLONE_FIXTURE
+from plone.app.testing import IntegrationTesting
+from plone.app.testing import FunctionalTesting
+from plone.testing import z2
 
 
-class AddThisTestCase(ptc.PloneTestCase):
-    """Base class for integration tests.
+class AddThisTests(PloneSandboxLayer):
 
-    This may provide specific set-up and tear-down operations, or provide
-    convenience methods.
-    """
+    defaultBases = (PLONE_FIXTURE,)
 
-class AddThisFunctionalTestCase(ptc.FunctionalTestCase):
-    """We use this class for functional integration tests that use doctest
-    syntax. Again, we can put basic common utility or setup code in here.
-    """
+    def setUpZope(self, app, configurationContext):
+        z2.installProduct(app, 'collective.addthis')
+
+        # Load ZCML
+        import collective.addthis
+        self.loadZCML(name='configure.zcml', package=collective.addthis)
+
+    def setUpPloneSite(self, portal):
+        # Install into Plone site using portal_setup
+        applyProfile(portal, 'collective.addthis:default')
+
+    def tearDownZope(self, app):
+        pass
+
+
+ADDTHIS_FIXTURE = AddThisTests()
+ADDTHIS_INTEGRATION_TESTING = IntegrationTesting(bases=(ADDTHIS_FIXTURE,), name="AddThisTests:integration")
+ADDTHIS_FUNCTIONAL_TESTING = FunctionalTesting(bases=(ADDTHIS_FIXTURE,), name="AddThisTests:functional")
