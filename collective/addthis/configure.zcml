@@ -6,13 +6,10 @@
     i18n_domain="collective.addthis">
 
     <includeDependencies package="." />
+    <include package="Products.CMFCore" file="permissions.zcml"/>
+    <include file="upgrades.zcml"/>
 
     <i18n:registerTranslations directory="locales" />
-
-    <browser:resource
-        name="addthis.js"
-        file="addthis.js"
-        />
 
     <browser:resource
         name="addthis.css"

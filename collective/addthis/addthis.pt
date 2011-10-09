@@ -9,3 +9,5 @@
 </div>
 <!-- AddThis Button END -->
 
+<script type="text/javascript" tal:content="view/addthis_config_javascript"></script>
+<script type="text/javascript" tal:attributes="src view/javascript_url"></script>

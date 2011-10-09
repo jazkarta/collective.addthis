@@ -1,0 +1,14 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:gs="http://namespaces.zope.org/genericsetup"
+  i18n_domain="collective.addthis">
+
+  <gs:upgradeStep
+    title="Upgrade collective.addthis * to 1000"
+    description=""
+    source="*"
+    destination="1000"
+    handler=".upgrades.cleanup_old_release"
+    profile="collective.addthis:default"/>
+
+</configure>
