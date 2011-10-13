@@ -17,11 +17,11 @@ class SocialMediaSources(object):
     def _services(self):
         """Returns the services using that addthis API"""
         response = urlopen(SHARING)
-        if len(response.readlines()):
-            return []
-        data = json.load(response)
-        # FIXME Error handling? occurs when SHARING is not available
-        return data[u'data']
+        if response.readlines == '200':
+            data = json.load(response)
+            if data:
+                return data[u'data']
+        return []
 
     @property
     def sources(self):
