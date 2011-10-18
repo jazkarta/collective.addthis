@@ -26,7 +26,6 @@ class AddThisViewlet(common.ViewletBase):
         vocab = getUtility(IVocabularyFactory, name="AddThis Social Media")
         chicklets = [term for term in vocab(self.context)
                     if term.value in chicklet_names]
-        import pdb;pdb.set_trace()
         results = []
         for chick in chicklets:
             results[chicklet_names.index(chick.value)] = chick
