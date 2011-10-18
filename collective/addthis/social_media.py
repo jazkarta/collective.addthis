@@ -17,7 +17,7 @@ class SocialMediaSources(object):
     def _services(self):
         """Returns the services using that addthis API"""
         response = urlopen(SHARING)
-        if response.readlines == '200':
+        if response.code == 200:
             data = json.load(response)
             if data:
                 return data[u'data']
