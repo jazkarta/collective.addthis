@@ -9,6 +9,8 @@ Changelog
 - Add collective.googleanalytics integration following 
   http://www.addthis.com/help/google-analytics-integration#.To83N5zOifZ
   [toutpt]
+- Add data_track_addressbar option
+  [toutpt]
 
 1.1.1 Released 2011-08-18
 -------------------------

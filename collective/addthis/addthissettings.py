@@ -52,6 +52,13 @@ class AddThisControlPanelAdapter(SchemaAdapterBase):
             self.context.addthis_chicklets = value
     addthis_chicklets = ProxyFieldProperty(IAddThisControlPanelForm['addthis_chicklets'])
 
+    def get_addthis_data_track_addressbar(self):
+        return getattr(self.context, 'addthis_data_track_addressbar',
+                       getattr(self.context, 'addthis_data_track_addressbar', False))
+    def set_addthis_data_track_addressbar(self, value):
+        if safe_hasattr(self.context, 'addthis_data_track_addressbar'):
+            self.context.addthis_data_track_addressbar = value
+    addthis_data_track_addressbar =  ProxyFieldProperty(IAddThisControlPanelForm['addthis_data_track_addressbar'])
 
 class AddThisControlPanel(ControlPanelForm):
     """ Pathkey control panel """
