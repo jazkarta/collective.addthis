@@ -34,6 +34,12 @@ class IAddThisControlPanelForm(Interface):
                                  vocabulary="AddThis Social Media"),
         )
 
+    addthis_data_track_addressbar = schema.Bool(
+        title=_(u"Address Bar Sharing"),
+        description=_(u"(Beta). Measures when users copy your URL from their"
+                       " browser. Add an analytics fragment to the URL."),
+        default=False,
+        )
 
 class IAddthisBrowserLayer(IDefaultPloneLayer):
     """Addthis marker"""

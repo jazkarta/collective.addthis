@@ -12,5 +12,6 @@
    <element value="google" />
    <element value="twitter" />
   </property>
+  <property name="addthis_data_track_addressbar" type="boolean" purge="False">False</property>
  </object>
 </object>

@@ -41,7 +41,9 @@ class AddThisViewlet(common.ViewletBase):
         addthis_config = {'ui_click': True,
                           'ui_hover_direction': 1,
                           'ui_language': self.language()}
-
+        if hasattr(self._settings, 'addthis_data_track_addressbar'):
+            if self._settings.addthis_data_track_addressbar:
+                addthis_config['data_track_addressbar'] = self._settings.addthis_data_track_addressbar
         if HAS_GA:
 
             analytics_tool = getToolByName(self.context, "portal_analytics",None)
