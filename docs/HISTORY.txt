@@ -4,6 +4,9 @@ Changelog
 1.2 (unreleased)
 ----------------
 
+- Added spanish translation [Manuel, Acento Web, S.L.]
+- Uses plone.app.registry for settings [pingviini]
+- Added data_track_callback option [pingviini]
 - Added tests [pingviini]
 - Add french translation. [toutpt]
 - Add collective.googleanalytics integration following 
