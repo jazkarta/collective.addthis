@@ -10,19 +10,29 @@ class IAddThis(Interface):
     """ AddThis marker """
 
 
+class IAddthisBrowserLayer(IDefaultPloneLayer):
+    """Addthis marker"""
+
+
 class IAddThisControlPanel(Interface):
-    """ AddThis Controlpanel"""
+    """ AddThis Controlpanel marker"""
 
 
-class IAddThisControlPanelForm(Interface):
-    """Control panel settings used to effect the rendering of the addthis
-    viewlet."""
+class IAddThisSettings(Interface):
+    """
+    AddThis control panel settings used to effect the rendering of the
+    addthis viewlet.
+    """
 
-    addthis_url = schema.URI(title=_(u"AddThis URL"), required=False,)
+    addthis_url = schema.URI(
+        title=_(u"AddThis URL"),
+        required=False,
+        default="http://www.addthis.com/bookmark.php?v=250&amp;username=xa-4ec2c45d56847e04")
+
     addthis_script_url = schema.URI(
         title=_(u"AddThis JavaScript URL"),
         required=False,
-        )
+        default="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4ec2c45d56847e04&async=1")
 
     addthis_chicklets = schema.List(
         title=_(u"Social media selection"),
@@ -41,14 +51,18 @@ class IAddThisControlPanelForm(Interface):
         default=False,
         )
 
-class IAddthisBrowserLayer(IDefaultPloneLayer):
-    """Addthis marker"""
+    addthis_data_track_clickback = schema.Bool(
+        title=_(u"Add clickback tracking variable to URL"),
+        description=_(u"Use this to track how many people come back to your "
+                       "content via links shared with AddThis."),
+        default=False,
+        )
 
 
 class ISocialMedia(Interface):
     """A source of listing of social media supported by the addthis service."""
 
     sources = schema.Iterable(
-        title=_(u"social media sources"),
+        title=_(u"Social media sources"),
         description=_(u"A list of valid social media."),
         )

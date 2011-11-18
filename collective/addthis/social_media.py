@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
-from urllib import urlopen
+import urllib
+import socket
 from zope.interface import implements, alsoProvides
 from zope.component import getUtility
 from zope.schema.interfaces import IVocabularyFactory
@@ -16,7 +17,16 @@ class SocialMediaSources(object):
 
     def _services(self):
         """Returns the services using that addthis API"""
-        response = urlopen(SHARING)
+        try:
+            old_default = socket.getdefaulttimeout()
+            socket.setdefaulttimeout(5)
+            response = urllib.urlopen(SHARING)
+            socket.setdefaulttimeout(old_default)
+        except IOError:
+            return []
+        except socket.timeout:
+            return []
+
         if response.code == 200:
             data = json.load(response)
             if data:

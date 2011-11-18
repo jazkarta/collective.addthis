@@ -6,20 +6,13 @@
     i18n_domain="collective.addthis">
 
     <includeDependencies package="." />
-    <include package="Products.CMFCore" file="permissions.zcml"/>
+    <!--<include package="Products.CMFCore" file="permissions.zcml"/>
+    -->
     <include file="upgrades.zcml"/>
 
     <i18n:registerTranslations directory="locales" />
 
-    <browser:resource
-        name="addthis.css"
-        file="addthis.css"
-        />
-
-    <browser:resource
-        name="addthis.gif"
-        file="addthis.gif"
-        />
+    <browser:resourceDirectory name="collective.addthis" directory="static" />
 
     <browser:viewlet
         name="collective.addthis"
@@ -32,15 +25,14 @@
 
     <browser:page
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-        name="addthis-controlpanel"
-        class=".addthissettings.AddThisControlPanel"
+        name="addthis-settings"
+        class=".controlpanel.AddThisControlPanel"
         permission="cmf.ManagePortal"
         layer=".interfaces.IAddthisBrowserLayer"
         />
 
-    <adapter factory=".addthissettings.AddThisControlPanelAdapter" />
-
     <utility factory=".social_media.SocialMediaSources" />
+
     <utility
         component=".social_media.socialMediaVocabulary"
         name="AddThis Social Media"

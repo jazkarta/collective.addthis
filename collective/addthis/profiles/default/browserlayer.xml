@@ -1,4 +1,4 @@
 <layers>
-    <layer name="collective.addthis"
-           interface="collective.addthis.interfaces.IAddthisBrowserLayer" />
+  <layer name="collective.addthis"
+         interface="collective.addthis.interfaces.IAddthisBrowserLayer" />
 </layers>
