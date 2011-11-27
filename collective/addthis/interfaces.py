@@ -10,12 +10,8 @@ class IAddThis(Interface):
     """ AddThis marker """
 
 
-class IAddthisBrowserLayer(IDefaultPloneLayer):
+class IAddThisBrowserLayer(IDefaultPloneLayer):
     """Addthis marker"""
-
-
-class IAddThisControlPanel(Interface):
-    """ AddThis Controlpanel marker"""
 
 
 class IAddThisSettings(Interface):
@@ -24,15 +20,28 @@ class IAddThisSettings(Interface):
     addthis viewlet.
     """
 
+    addthis_activated = schema.Bool(
+        title=_(u"Activate AddThis"),
+        default=True,)
+
+    addthis_account_name = schema.TextLine(
+        title=_(u"AddThis account name"),
+        default=u"",
+        required=False,)
+
     addthis_url = schema.URI(
         title=_(u"AddThis URL"),
+        description=_(u"AddThis bookmark URL. Usually there is no need to "
+                      "change this."),
         required=False,
-        default="http://www.addthis.com/bookmark.php?v=250&amp;username=xa-4ec2c45d56847e04")
+        default="http://www.addthis.com/bookmark.php?v=250")
 
     addthis_script_url = schema.URI(
         title=_(u"AddThis JavaScript URL"),
+        description=_(u"URL to AddThis javascript. Usually there is no "
+                      "reason to change this."),
         required=False,
-        default="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4ec2c45d56847e04&async=1")
+        default="http://s7.addthis.com/js/250/addthis_widget.js")
 
     addthis_chicklets = schema.List(
         title=_(u"Social media selection"),
@@ -44,19 +53,24 @@ class IAddThisSettings(Interface):
                                  vocabulary="AddThis Social Media"),
         )
 
+    addthis_load_asynchronously = schema.Bool(
+        title=_(u"Load AddThis resources asynchronously"),
+        description=_(u"By enabling this AddThis loads it's resources only "
+                      "after whole page has been fully loaded. This prevents "
+                      "AddThis from blocking page load."),
+        default=False,)
+
     addthis_data_track_addressbar = schema.Bool(
         title=_(u"Address Bar Sharing"),
         description=_(u"(Beta). Measures when users copy your URL from their"
                        " browser. Add an analytics fragment to the URL."),
-        default=False,
-        )
+        default=False,)
 
     addthis_data_track_clickback = schema.Bool(
         title=_(u"Add clickback tracking variable to URL"),
         description=_(u"Use this to track how many people come back to your "
                        "content via links shared with AddThis."),
-        default=False,
-        )
+        default=False,)
 
 
 class ISocialMedia(Interface):

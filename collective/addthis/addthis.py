@@ -24,6 +24,10 @@ class AddThisViewlet(common.ViewletBase):
     index = ViewPageTemplateFile('addthis.pt')
 
     @property
+    def available(self):
+        return self._settings.addthis_activated
+
+    @property
     def _settings(self):
         registry = getUtility(IRegistry)
         settings = registry.forInterface(IAddThisSettings)
@@ -45,9 +49,14 @@ class AddThisViewlet(common.ViewletBase):
         Returns URL to AddThis service. If that isn't specified we'll return
         an random URL from AddThis.com when this addon was developed.
         """
-        return self._settings.addthis_url or "http://www.addthis.com/bookmark.php?v=250&amp;username=xa-4b7fc6a9319846fd"
+        username = self._settings.addthis_account_name
+        addthis_url = self._settings.addthis_url
+        if username:
+            addthis_url += "&amp;username=%s" % username
+        return addthis_url
 
     def addthis_config(self):
+        print "addthis config"
         addthis_config = {'ui_click': True,
                           'ui_hover_direction': 1,
                           'ui_language': self.language()}
@@ -74,7 +83,16 @@ class AddThisViewlet(common.ViewletBase):
         return "var addthis_config = %s" % json.dumps(self.addthis_config())
 
     def javascript_url(self):
-        return self._settings.addthis_script_url
+        username = self._settings.addthis_account_name
+        async = self._settings.addthis_load_asynchronously
+        script_url = self._settings.addthis_script_url
+        if username and async:
+            script_url += "#pubid=%s&amp;async=1" % username
+        elif username and not async:
+            script_url += "#pubid=%s" % username
+        elif not username and async:
+            script_url += "#async=1"
+        return script_url
 
     def language(self):
         state = getMultiAdapter((self.context, self.request),

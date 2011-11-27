@@ -25,6 +25,7 @@ setup(name='collective.addthis',
       install_requires=[
           'setuptools',
           'plone.app.registry',
+          'plone.app.z3cform',
           # -*- Extra requirements: -*-
       ],
       extras_require={

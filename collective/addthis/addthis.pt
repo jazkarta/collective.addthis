@@ -1,4 +1,5 @@
 <!-- AddThis Button BEGIN -->
+<tal:block tal:condition="view/available">
 <div class="addthis_toolbox addthis_default_style" id="socialtools" i18n:domain="collective.addthis">
   <a href="#" class="addthis_button_compact" tal:attributes="href view/getAddThisURL" i18n:translate="">Share</a>
   <span class="addthis_separator">|</span>
@@ -13,3 +14,4 @@
 <!-- AddThis Button END -->
 <script type="text/javascript" tal:content="view/addthis_config_javascript"></script>
 <script type="text/javascript" tal:attributes="src view/javascript_url"></script>
+</tal:block>

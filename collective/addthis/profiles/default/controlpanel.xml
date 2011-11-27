@@ -3,10 +3,9 @@
   <configlet title="Configure AddThis" action_id="addthis-settings"
     appId="collective.addthis" category="Products"
     condition_expr=""
-    url_expr="string:${portal_url}/addthis-settings"
+    url_expr="string:${portal_url}/@@addthis-settings"
     visible="True"
-    icon_expr="string:$portal_url/++resource++collective.addthis/addthis.gif"
-    >
+    icon_expr="string:$portal_url/++resource++collective.addthis/addthis.gif">
     <permission>Manage portal</permission>
     Configure AddThis
   </configlet>
