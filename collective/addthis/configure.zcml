@@ -9,7 +9,6 @@
     <include package="Products.CMFCore" file="permissions.zcml"
              xmlns:zcml="http://namespaces.zope.org/zcml"
              zcml:condition="have plone-41" />
-    <include file="upgrades.zcml"/>
 
     <i18n:registerTranslations directory="locales" />
     <browser:resourceDirectory name="collective.addthis" directory="static" />
@@ -23,12 +22,24 @@
         layer=".interfaces.IAddThisBrowserLayer"
         />
 
+    <browser:page
+        name="addthis-settings"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".controlpanel.AddThisControlPanel"
+        permission="cmf.ManagePortal"
+        layer=".interfaces.IAddThisBrowserLayer"
+        />
 
     <utility factory=".social_media.SocialMediaSources" />
 
     <utility
         component=".social_media.socialMediaVocabulary"
         name="AddThis Social Media"
+        />
+
+    <subscriber
+        for="plone.registry.interfaces.IRecordModifiedEvent"
+        handler=".controlpanel.notify_configuration_changed"
         />
 
     <genericsetup:registerProfile
@@ -39,28 +50,6 @@
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 
-    <genericsetup:upgradeDepends
-        title="Addition of the chicklet property settings"
-        description="Sets the chicklet settings to use the default set so that existing behavior does not change."
-        source="2"
-        destination="3"
-        profile="collective.addthis:default"
-        import_steps="propertiestool"
-        purge="False"
-        run_deps="False"
-        />
-
-    <browser:page
-        name="addthis-settings"
-        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-        class=".controlpanel.AddThisControlPanel"
-        permission="cmf.ManagePortal"
-        layer=".interfaces.IAddThisBrowserLayer"
-        />
-
-    <subscriber 
-        for="plone.registry.interfaces.IRecordModifiedEvent"
-        handler=".controlpanel.notify_configuration_changed"
-        />
+    <include file="upgrades.zcml"/>
 
 </configure>

@@ -13,6 +13,8 @@ class IAddThis(Interface):
 class IAddThisBrowserLayer(IDefaultPloneLayer):
     """Addthis marker"""
 
+class IAddthisBrowserLayer(IDefaultPloneLayer):
+    """Addthis marker"""
 
 class IAddThisSettings(Interface):
     """

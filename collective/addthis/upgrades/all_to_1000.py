@@ -7,4 +7,3 @@ def cleanup_old_release(context):
     jstool.unregisterResource('http://s7.addthis.com/js/250/addthis_widget.js')
     jstool.unregisterResource('++resource++addthis.js')
     jstool.cookResources()
-    
