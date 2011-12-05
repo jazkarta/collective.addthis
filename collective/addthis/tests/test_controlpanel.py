@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 import unittest2 as unittest
+import transaction
 from collective.addthis.testing import ADDTHIS_INTEGRATION_TESTING,\
                                        ADDTHIS_FUNCTIONAL_TESTING
 from collective.addthis.interfaces import IAddThisSettings,\
@@ -8,7 +9,7 @@ from plone.app.testing import logout, setRoles, TEST_USER_ID
 
 from zope.component import getMultiAdapter, queryUtility
 from zope.interface import directlyProvides
-from plone.testing.z2 import Browser
+#from plone.testing.z2 import Browser
 from plone.registry.interfaces import IRegistry
 from plone.registry import Registry
 from Products.CMFCore.utils import getToolByName
@@ -62,12 +63,30 @@ class IntegrationTest(unittest.TestCase):
         self.assertFalse(rec[BASE % 'addthis_data_track_addressbar'].value)
 
 
+
 class FunctionalTest(unittest.TestCase):
 
     layer = ADDTHIS_FUNCTIONAL_TESTING
 
     def setUp(self):
         self.portal = self.layer['portal']
+        setRoles(self.portal, TEST_USER_ID, ['Manager'])
+        self.registry = Registry()
+        self.registry.registerInterface(IAddThisSettings)
+        directlyProvides(self.portal.REQUEST, IAddThisBrowserLayer)
+
+    def test_registry_event_listener(self):
+        pj = getToolByName(self.portal, 'portal_javascripts')
+        BASE = 'collective.addthis.interfaces.IAddThisSettings.%s'
+        rec = self.registry.records
+        rec[BASE % 'addthis_load_asynchronously'].value = True
+        transaction.commit()
+        addthis = pj.getResource('++resource++collective.addthis/addthis.js')
+        self.assertTrue(addthis.getEnabled())
+        rec[BASE % 'addthis_load_asynchronously'].value = False
+        transaction.commit()
+        self.assertFalse(addthis.getEnabled())
+
 
 
 def test_suite():
