@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.3'
+version = '1.2dev'
 
 setup(name='collective.addthis',
       version=version,
@@ -25,7 +25,6 @@ setup(name='collective.addthis',
       install_requires=[
           'setuptools',
           'plone.app.registry',
-          'plone.app.z3cform',
           # -*- Extra requirements: -*-
       ],
       extras_require={
