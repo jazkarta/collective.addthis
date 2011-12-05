@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-03-03 20:05+0000\n"
+"POT-Creation-Date: 2011-11-18 15:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,27 +17,63 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.addthis\n"
 
-#: ./interfaces.py:19
+#: ./interfaces.py:49
+msgid "(Beta). Measures when users copy your URL from their browser. Add an analytics fragment to the URL."
+msgstr ""
+
+#: ./interfaces.py:39
+msgid "A list of social media items that will be displayed along side the share link as individual chicklets."
+msgstr ""
+
+#: ./interfaces.py:67
+msgid "A list of valid social media."
+msgstr ""
+
+#: ./interfaces.py:55
+msgid "Add clickback tracking variable to URL"
+msgstr ""
+
+#: ./interfaces.py:33
 msgid "AddThis JavaScript URL"
 msgstr ""
 
-#: ./interfaces.py:18
+#: ./interfaces.py:28
 msgid "AddThis URL"
 msgstr ""
 
-#: ./addthissettings.py:62
+#: ./controlpanel.py:8
 msgid "AddThis settings"
+msgstr ""
+
+#: ./interfaces.py:48
+msgid "Address Bar Sharing"
 msgstr ""
 
 #: ./profiles/default/actionicons.xml
 msgid "Configure AddThis"
 msgstr ""
 
-#: ./addthissettings.py:64
-msgid "Here you can customize Addthis settings"
+#: ./controlpanel.py:9
+msgid "Set your own AddThis URL and social media chicklets by using this form"
 msgstr ""
 
 #: ./addthis.pt:3
 msgid "Share"
+msgstr ""
+
+#: ./interfaces.py:43
+msgid "Social media"
+msgstr ""
+
+#: ./interfaces.py:38
+msgid "Social media selection"
+msgstr ""
+
+#: ./interfaces.py:66
+msgid "Social media sources"
+msgstr ""
+
+#: ./interfaces.py:56
+msgid "Use this to track how many people come back to your content via links shared with AddThis."
 msgstr ""
 
