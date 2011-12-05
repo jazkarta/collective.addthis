@@ -11,10 +11,12 @@ class IAddThis(Interface):
 
 
 class IAddThisBrowserLayer(IDefaultPloneLayer):
-    """Addthis marker"""
+    """AddThis marker"""
+
 
 class IAddthisBrowserLayer(IDefaultPloneLayer):
-    """Addthis marker"""
+    """Old Addthis marker"""
+
 
 class IAddThisSettings(Interface):
     """
