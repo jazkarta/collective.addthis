@@ -27,7 +27,8 @@ def migrate_controlpanel(setuptool):
     registry = queryUtility(IRegistry)
     BASE = 'collective.addthis.interfaces.IAddThisSettings.%s'
     rec = registry.records
-    props = tools.properties().addthis_properties
+    portal_properties = tools.properties()
+    props = portal_properties.addthis_properties
 
     addthis_url = getattr(props, 'addthis_url', None)
     if addthis_url:
@@ -40,7 +41,11 @@ def migrate_controlpanel(setuptool):
         chicklets = [unicode(chicklet) for chicklet in chicklets]
         rec[BASE % 'addthis_chicklets'].value = chicklets
 
-    transaction.commit()
+    portal_properties.manage_delObjects('addthis_properties')
+    from Products.CMFCore.utils import getToolByName
+    cp = getToolByName(setuptool, 'portal_controlpanel')
+    cp.unregisterConfiglet('setAddThisSettings')
+
     logger.info("Migrated addthis controlpanel settings.")
 
 
