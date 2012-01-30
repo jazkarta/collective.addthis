@@ -28,7 +28,7 @@ class AddThisControlPanel(controlpanel.ControlPanelFormWrapper):
 
 def notify_configuration_changed(event):
     """
-    Event subscriber that is called every time the configuration changed.
+    Event subscriber that is called when configuration has changed.
     """
 
     portal = getSite()

@@ -2,5 +2,6 @@
 <object name="portal_javascripts" meta_type="JavaScripts Registry">
  <javascript authenticated="False" cacheable="True" compression="none"
     conditionalcomment="" cookable="True" enabled="True" expression=""
-    id="++resource++collective.addthis/addthis.js" inline="False"/>
+    id="++resource++collective.addthis/addthis.js" inline="False" 
+    insert-after="++resource++plone.app.jquerytools.form.js" />
 </object>

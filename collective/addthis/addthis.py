@@ -56,7 +56,6 @@ class AddThisViewlet(common.ViewletBase):
         return addthis_url
 
     def addthis_config(self):
-        print "addthis config"
         addthis_config = {'ui_click': True,
                           'ui_hover_direction': 1,
                           'ui_language': self.language()}
