@@ -1,5 +1,4 @@
 import logging
-import transaction
 from zope.component import queryMultiAdapter
 from zope.component import queryUtility
 from plone.registry.interfaces import IRegistry

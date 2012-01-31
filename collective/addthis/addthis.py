@@ -3,7 +3,6 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 from plone.app.layout.viewlets import common
 from plone.registry.interfaces import IRegistry
-from plone.memoize import view
 from zope.schema.interfaces import IVocabularyFactory
 from collective.addthis.interfaces import IAddThisSettings
 try:
