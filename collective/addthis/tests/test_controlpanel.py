@@ -9,7 +9,6 @@ from plone.app.testing import logout, setRoles, TEST_USER_ID
 
 from zope.component import getMultiAdapter, queryUtility
 from zope.interface import directlyProvides
-#from plone.testing.z2 import Browser
 from plone.registry.interfaces import IRegistry
 from plone.registry import Registry
 from Products.CMFCore.utils import getToolByName
@@ -61,7 +60,7 @@ class IntegrationTest(unittest.TestCase):
         self.assertEqual(rec[BASE % 'addthis_chicklets'].value, [])
         self.assertFalse(rec[BASE % 'addthis_data_track_clickback'].value)
         self.assertFalse(rec[BASE % 'addthis_data_track_addressbar'].value)
-
+        self.assertTrue(rec[BASE % 'addthis_button_visible'].value)
 
 
 class FunctionalTest(unittest.TestCase):
@@ -86,7 +85,6 @@ class FunctionalTest(unittest.TestCase):
         rec[BASE % 'addthis_load_asynchronously'].value = False
         transaction.commit()
         self.assertFalse(addthis.getEnabled())
-
 
 
 def test_suite():

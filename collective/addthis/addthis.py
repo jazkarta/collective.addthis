@@ -43,6 +43,13 @@ class AddThisViewlet(common.ViewletBase):
             results[chicklet_names.index(chick.value)] = chick
         return results
 
+    @property
+    def addthis_button_visible(self):
+        try:
+            return self._settings.addthis_button_visible
+        except KeyError:
+            return True
+
     def getAddThisURL(self):
         """
         Returns URL to AddThis service. If that isn't specified we'll return

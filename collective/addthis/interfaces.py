@@ -76,6 +76,10 @@ class IAddThisSettings(Interface):
                        "content via links shared with AddThis."),
         default=False,)
 
+    addthis_button_visible = schema.Bool(
+        title=_(u"Show AddThis button before social media items."),
+        default=True,)
+
 
 class ISocialMedia(Interface):
     """A source of listing of social media supported by the addthis service."""
