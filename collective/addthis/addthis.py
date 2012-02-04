@@ -45,10 +45,7 @@ class AddThisViewlet(common.ViewletBase):
 
     @property
     def addthis_button_visible(self):
-        try:
-            return self._settings.addthis_button_visible
-        except KeyError:
-            return True
+        return self._settings.addthis_button_visible
 
     def getAddThisURL(self):
         """
