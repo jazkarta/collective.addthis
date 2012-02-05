@@ -57,11 +57,11 @@
 
   <gs:upgradeDepends
     title="Upgrade collective.addthis GS profile from 1001 to 1002."
-    description="Adds new configuration option to hide addthis button."
+    description="Adds new configuration option to hide addthis button and reorders addthis css and js in registry so that they are merged with the majority of resources."
     source="1001"
     destination="1002"
     profile="collective.addthis:default"
-    import_steps="plone.app.registry"
+    import_steps="plone.app.registry jsregistry cssregistry"
     purge="False"
     run_deps="False"
     />

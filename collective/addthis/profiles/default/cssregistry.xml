@@ -2,5 +2,6 @@
 <object name="portal_css" meta_type="Stylesheets Registry">
  <stylesheet title="" cacheable="True" compression="full" cookable="True"
     enabled="1" expression="" id="++resource++collective.addthis/addthis.css"
-    media="screen" rel="stylesheet" rendering="link"/>
+    media="screen" rel="stylesheet" rendering="link"
+    insert-after="forms.css"/>
 </object>
