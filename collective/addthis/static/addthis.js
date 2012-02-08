@@ -3,7 +3,7 @@ $(document).ready(function() {
         addthis.init();
     }
     catch(e){
-        console.warn('It seems this page is missing viewlet which provides ' +
-                    'addthis scripts.');
+        // Do nothing as our page template doesn't have
+        // IBelowContent viewlet provider.
     }
 });
