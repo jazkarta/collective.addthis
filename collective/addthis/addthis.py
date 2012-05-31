@@ -63,17 +63,23 @@ class AddThisViewlet(common.ViewletBase):
                           'ui_hover_direction': 1,
                           'ui_language': self.language()}
         if self._settings.addthis_data_track_addressbar:
-            addthis_config['data_track_addressbar'] = self._settings.addthis_data_track_addressbar
+            track_addressbar = self._settings.addthis_data_track_addressbar
+            addthis_config['data_track_addressbar'] = track_addressbar
 
         if self._settings.addthis_data_track_clickback:
-            addthis_config['data_track_clickback'] = self._settings.addthis_data_track_clickback
+            track_clickback = self._settings.addthis_data_track_clickback
+            addthis_config['data_track_clickback'] = track_clickback
 
         if HAS_GA:
-            analytics_tool = getToolByName(self.context, "portal_analytics", None)
+            analytics_tool = getToolByName(self.context,
+                                           "portal_analytics",
+                                           None)
             account_id = None
 
             if analytics_tool is not None:
-                account_id = getattr(analytics_tool, 'tracking_web_property', None)
+                account_id = getattr(analytics_tool,
+                                     'tracking_web_property',
+                                     None)
 
             if account_id is not None:
                 addthis_config['data_ga_property'] = account_id

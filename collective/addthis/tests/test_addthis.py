@@ -44,4 +44,3 @@ class FunctionalTest(unittest.TestCase):
         browser.open(self.portal.absolute_url())
         self.assertTrue('http://www.addthis.com/bookmark.php?v=250'\
             in browser.contents)
-
