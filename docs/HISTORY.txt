@@ -5,6 +5,8 @@ Changelog
 ------------------
 
 - Fix when work offline [toutpt]
+- Refactor SocialMediaSources to work with plone.app.registry and not
+  fecthing them over http on each rendering. [toutpt]
 
 1.3.1 (2012-02-08)
 ------------------

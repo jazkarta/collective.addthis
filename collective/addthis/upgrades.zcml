@@ -41,17 +41,17 @@
     <gs:upgradeStep
       title="Remove old browserlayer"
       description="Removes old browserlayer so that we can use our new one which is properly named"
-      handler=".upgrades.1000_to_1001.remove_old_browserlayer"/>
+      handler=".upgrades.v1x.remove_old_browserlayer"/>
 
     <gs:upgradeStep
       title="Run import steps"
       description=""
-      handler=".upgrades.1000_to_1001.run_import_steps"/>
+      handler=".upgrades.v1x.run_import_steps"/>
 
     <gs:upgradeStep
       title="Migrate addthis properties"
       description="Migrates old addthis_properties to addthis registry."
-      handler=".upgrades.1000_to_1001.migrate_controlpanel"/>
+      handler=".upgrades.v1x.migrate_controlpanel"/>
 
   </gs:upgradeSteps>
 
@@ -65,5 +65,13 @@
     purge="False"
     run_deps="False"
     />
+
+  <gs:upgradeStep
+    title="1002 -> 1003"
+    description="Just apply the default profile"
+    source="1002"
+    destination="1003"
+    handler=".upgrades.v1x.run_import_steps"
+    profile="collective.addthis:default"/>
 
 </configure>

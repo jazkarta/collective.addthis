@@ -4,6 +4,7 @@ from Products.CMFCore.utils import getToolByName
 from plone.app.registry.browser import controlpanel
 from plone.registry.interfaces import IRecordModifiedEvent
 from zope.app.component.hooks import getSite
+from zope import component
 from collective.addthis.interfaces import IAddThisSettings
 from collective.addthis import _
 
@@ -21,6 +22,13 @@ class AddThisSettingsForm(controlpanel.RegistryEditForm):
     def updateWidgets(self):
         super(AddThisSettingsForm, self).updateWidgets()
 
+    def update(self):
+        super(AddThisSettingsForm, self).update()
+        #update social media sources
+        updater = component.getMultiAdapter((self.context, self.request),
+                                  name=u'addthis-social-media-updater')
+        updater()
+
 
 class AddThisControlPanel(controlpanel.ControlPanelFormWrapper):
     form = AddThisSettingsForm
@@ -37,14 +45,15 @@ def notify_configuration_changed(event):
     if IRecordModifiedEvent.providedBy(event):
         # AddThis control panel setting changed
         if event.record.fieldName == 'addthis_load_asynchronously':
+            jsid = '++resource++collective.addthis/addthis.js'
             if event.record.value == True:
                 # Enable asynchronous loading
-                js = js_registry.getResource('++resource++collective.addthis/addthis.js')
+                js = js_registry.getResource(jsid)
                 if not js.getEnabled():
                     js.setEnabled(True)
             else:
                 # Disable asynchronous loading
-                js = js_registry.getResource('++resource++collective.addthis/addthis.js')
+                js = js_registry.getResource(jsid)
                 if js.getEnabled():
                     js.setEnabled(False)
 

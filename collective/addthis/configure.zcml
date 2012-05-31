@@ -29,6 +29,13 @@
         permission="cmf.ManagePortal"
         layer=".interfaces.IAddThisBrowserLayer"
         />
+    <browser:page
+        name="addthis-social-media-updater"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".social_media.SocialMediaUpdater"
+        permission="cmf.ManagePortal"
+        layer=".interfaces.IAddThisBrowserLayer"
+        />
 
     <utility factory=".social_media.SocialMediaSources" />
 
