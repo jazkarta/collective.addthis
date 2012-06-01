@@ -10,6 +10,7 @@ from collective.addthis.interfaces import ISocialMedia
 from Products.Five.browser import BrowserView
 from plone.registry.interfaces import IRegistry
 
+
 SHARING = "http://cache.addthiscdn.com/services/v1/sharing.en.json"
 
 
@@ -45,23 +46,27 @@ class SocialMediaUpdater(BrowserView):
 
     def __call__(self):
         raw_services = self._services()
+
         if not raw_services:
             return u"no services retrieved, don't update the configuration"
         services = []
+
         for service in raw_services:
-            try:
-                unicode(service[u'name'], 'utf-8')
-            except TypeError:
-                value = service[u'name'].encode('ascii', 'ignore')
-                service[u'name'] = unicode(value)
-            services.append("%s|%s" % (service[u'code'], service[u'name']))
-        # TODO: save in registry
+            value = '%s|%s' % (service['code'], service['name'])
+            if not isinstance(value, unicode):
+                try:
+                    value = unicode(value, 'utf-8')
+                except TypeError:
+                    value = value.encode('ascii', 'ignore')
+            services.append(value)
+
         registry = component.queryUtility(IRegistry)
-        registry['collective.addthis.socialmediasources'] = tuple(services)
+        registry['collective.addthis.socialmediasources'] = services
         return u"%s services retrieved" % len(services)
 
     def _services(self):
-        """Returns the services using that addthis API"""
+        """Returns the services using addthis API"""
+
         try:
             old_default = socket.getdefaulttimeout()
             socket.setdefaulttimeout(5)
