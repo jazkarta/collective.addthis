@@ -62,6 +62,12 @@ class IntegrationTest(unittest.TestCase):
         self.assertFalse(rec[BASE % 'addthis_data_track_addressbar'].value)
         self.assertTrue(rec[BASE % 'addthis_button_visible'].value)
 
+    def test_addthis_socialmediasources_updater_view(self):
+        view = getMultiAdapter((self.portal, self.portal.REQUEST),
+                               name=u'addthis-social-media-updater')
+        view = view.__of__(self.portal)
+        self.assertTrue(view)
+        self.assertTrue(view())
 
 class FunctionalTest(unittest.TestCase):
 
