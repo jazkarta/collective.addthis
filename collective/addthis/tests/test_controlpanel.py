@@ -4,7 +4,8 @@ import transaction
 from collective.addthis.testing import ADDTHIS_INTEGRATION_TESTING,\
                                        ADDTHIS_FUNCTIONAL_TESTING
 from collective.addthis.interfaces import IAddThisSettings,\
-                                          IAddThisBrowserLayer
+                                          IAddThisBrowserLayer,\
+                                          ISocialMedia
 from plone.app.testing import logout, setRoles, TEST_USER_ID
 
 from zope.component import getMultiAdapter, queryUtility
@@ -68,6 +69,21 @@ class IntegrationTest(unittest.TestCase):
         view = view.__of__(self.portal)
         self.assertTrue(view)
         self.assertTrue(view())
+
+    def test_socialmediasources_utility(self):
+        """
+        Test that socialmedia sources returns keys as ascii and values as
+        unicode.
+        """
+        socialmedia = queryUtility(ISocialMedia)
+        sources = socialmedia.sources
+
+        for (key,value) in sources:
+            self.assertTrue(isinstance(key, str))
+            self.assertTrue(isinstance(value, unicode))
+
+
+
 
 class FunctionalTest(unittest.TestCase):
 
