@@ -71,7 +71,7 @@
     source="1002"
     destination="1003"
     purge="False"
-    run_reps="False"
+    run_deps="False"
     import_steps="plone.app.registry"
     profile="collective.addthis:default"/>
 
