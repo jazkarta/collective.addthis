@@ -3,7 +3,7 @@
  <records interface="collective.addthis.interfaces.IAddThisSettings" />
 
  <record name="collective.addthis.socialmediasources">
-     <field type="plone.registry.field.List">
+     <field type="plone.registry.field.Tuple">
          <title>Social Media Sources</title>
          <value_type type="plone.registry.field.TextLine" />
      </field>

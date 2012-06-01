@@ -61,7 +61,7 @@ class SocialMediaUpdater(BrowserView):
             services.append(value)
 
         registry = component.queryUtility(IRegistry)
-        registry['collective.addthis.socialmediasources'] = services
+        registry['collective.addthis.socialmediasources'] = tuple(services)
         return u"%s services retrieved" % len(services)
 
     def _services(self):
