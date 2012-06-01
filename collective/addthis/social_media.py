@@ -26,16 +26,16 @@ class SocialMediaSources(object):
     @property
     def sources(self):
         for service in self._services():
-            code, name = service.split('|')
-            yield (name, code,)
+            token, title = service.split('|')
+            yield (token.encode('ascii'), title,)
         raise StopIteration
 
 
 def socialMediaVocabulary(context):
     """Vocabulary factory for social media sources."""
     utility = component.getUtility(ISocialMedia)
-    terms = [SimpleTerm(value, value, token)
-             for token, value in utility.sources]
+    terms = [SimpleTerm(token, token, title)
+             for token, title in utility.sources]
     return SimpleVocabulary(terms)
 
 alsoProvides(socialMediaVocabulary, IVocabularyFactory)
