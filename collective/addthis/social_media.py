@@ -34,7 +34,7 @@ class SocialMediaSources(object):
 def socialMediaVocabulary(context):
     """Vocabulary factory for social media sources."""
     utility = component.getUtility(ISocialMedia)
-    terms = [SimpleTerm(value, token, token)
+    terms = [SimpleTerm(value, value, token)
              for token, value in utility.sources]
     return SimpleVocabulary(terms)
 
