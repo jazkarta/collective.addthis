@@ -63,15 +63,16 @@
     profile="collective.addthis:default"
     import_steps="plone.app.registry jsregistry cssregistry"
     purge="False"
-    run_deps="False"
-    />
+    run_deps="False"/>
 
-  <gs:upgradeStep
-    title="1002 -> 1003"
-    description="Just apply the default profile"
+  <gs:upgradeDepends
+    title="Upgrade collective.addthis GS profile from 1002 to 1003"
+    description="Adds registry for socialmedia sources."
     source="1002"
     destination="1003"
-    handler=".upgrades.v1x.run_import_steps"
+    purge="False"
+    run_reps="False"
+    import_steps="plone.app.registry"
     profile="collective.addthis:default"/>
 
 </configure>
