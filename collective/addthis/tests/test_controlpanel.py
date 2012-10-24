@@ -105,7 +105,3 @@ class FunctionalTest(unittest.TestCase):
         rec[BASE % 'addthis_load_asynchronously'].value = False
         transaction.commit()
         self.assertFalse(addthis.getEnabled())
-
-
-def test_suite():
-    return unittest.defaultTestLoader.loadTestsFromName(__name__)
