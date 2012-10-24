@@ -1,5 +1,6 @@
 from Products.CMFCore.utils import getToolByName
 
+
 def cleanup_old_release(context):
     #remove addthis.js and the external javascript from portal_javascript
     jstool = getToolByName(context, 'portal_javascripts')

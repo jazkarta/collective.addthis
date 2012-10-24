@@ -78,11 +78,9 @@ class IntegrationTest(unittest.TestCase):
         socialmedia = queryUtility(ISocialMedia)
         sources = socialmedia.sources
 
-        for (key,value) in sources:
+        for (key, value) in sources:
             self.assertTrue(isinstance(key, str))
             self.assertTrue(isinstance(value, unicode))
-
-
 
 
 class FunctionalTest(unittest.TestCase):
