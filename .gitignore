@@ -1,4 +1,5 @@
 *.mo
+*minitage*
 *.egg-info
 *.egg
 *.EGG

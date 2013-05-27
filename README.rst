@@ -1,6 +1,11 @@
 Introduction
 ============
 
+.. contents::
+
+.. image:: https://secure.travis-ci.org/collective/collective.addthis.png
+    :target: http://travis-ci.org/collective/collective.addthis 
+
 *Collective.addthis* is a simple Plone addon which brings `addthis.com`_ 
 services to Plone CMS.
 
