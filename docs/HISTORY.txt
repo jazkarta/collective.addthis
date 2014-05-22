@@ -4,7 +4,10 @@ Changelog
 1.3.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Move rendering to `@@addthis-renderer` view 
+  to not depend on viewlet machinery for rendering the widget.
+  The viewlet now calls this view.
+  [simahawk]
 
 
 1.3.3 (2013-05-27)

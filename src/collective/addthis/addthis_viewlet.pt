@@ -1,0 +1,3 @@
+<div id="addthis-viewlet">
+  <div tal:replace="structure context/@@addthis-renderer" />
+</div>

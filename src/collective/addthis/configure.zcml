@@ -17,8 +17,17 @@
         name="collective.addthis"
         class=".addthis.AddThisViewlet"
         manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
-        template="addthis.pt"
+        template="addthis_viewlet.pt"
         permission="zope.Public"
+        layer=".interfaces.IAddThisBrowserLayer"
+        />
+
+    <browser:page
+        name="addthis-renderer"
+        for="*"
+        class=".addthis.RendererView"
+        permission="zope.Public"
+        template="addthis_view.pt"
         layer=".interfaces.IAddThisBrowserLayer"
         />
 

@@ -1,6 +1,11 @@
-from zope.component import getUtility, getMultiAdapter
+from zope.component import getUtility
+from zope.component import getMultiAdapter
+
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from Products.Five import BrowserView
+
 from Products.CMFCore.utils import getToolByName
+
 from plone.app.layout.viewlets import common
 from plone.registry.interfaces import IRegistry
 from zope.schema.interfaces import IVocabularyFactory
@@ -20,7 +25,10 @@ except ImportError:
 class AddThisViewlet(common.ViewletBase):
     """ AddThis viewlet """
 
-    index = ViewPageTemplateFile('addthis.pt')
+    index = ViewPageTemplateFile('addthis_viewlet.pt')
+
+
+class RendererView(BrowserView):
 
     @property
     def available(self):
