@@ -4,9 +4,9 @@ Introduction
 .. contents::
 
 .. image:: https://secure.travis-ci.org/collective/collective.addthis.png
-    :target: http://travis-ci.org/collective/collective.addthis 
+    :target: http://travis-ci.org/collective/collective.addthis
 
-*Collective.addthis* is a simple Plone addon which brings `addthis.com`_ 
+*Collective.addthis* is a simple Plone addon which brings `addthis.com`_
 services to Plone CMS.
 
 *Collective.addthis* has customizable addthis url (pointing to your AddThis
@@ -15,11 +15,14 @@ By default those settings have random values I got from `addthis.com`_ so
 that testing *collective.addthis* would be easy. Those values are recommended
 to be changed if you're planning to use this addon in production.
 
-By default the widget is rendered by the a viewlet into `IBelowContentBody` 
+By default the widget is rendered by a viewlet into `IBelowContentBody`
 viewlet manager. If you want to render the widget on demand, you can use
 this snippet in your template:
 
     <div tal:replace="structure context/@@addthis-renderer" />
+
+Similar addons
+--------------
 
 There are few other similar addons for Plone which does the same job with
 different approach. If *collective.addthis* doesn't do the job for you I
