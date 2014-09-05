@@ -2,7 +2,9 @@
 <tal:block tal:condition="view/available">
   <div id="socialtools"
        class="addthis_toolbox addthis_default_style"
-       i18n:domain="collective.addthis" tal:define="chicklets view/chicklets">
+       tal:attributes="addthis:url context/absolute_url"
+       i18n:domain="collective.addthis"
+       tal:define="chicklets view/chicklets">
     <tal:addthis-button tal:condition="view/addthis_button_visible">
       <a href="#" class="addthis_button_compact"
          tal:attributes="href view/getAddThisURL" i18n:translate="">Share</a>
