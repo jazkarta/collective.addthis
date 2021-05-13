@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
-import urllib
 import socket
+from future.moves.urllib.request import urlopen
 from zope.interface import implementer, alsoProvides
 from zope import component
 from zope.schema.interfaces import IVocabularyFactory
@@ -70,7 +70,7 @@ class SocialMediaUpdater(BrowserView):
         try:
             old_default = socket.getdefaulttimeout()
             socket.setdefaulttimeout(5)
-            response = urllib.urlopen(SHARING)
+            response = urlopen(SHARING)
             socket.setdefaulttimeout(old_default)
         except IOError:
             return []

@@ -28,6 +28,7 @@ setup(name='collective.addthis',
       install_requires=[
           'setuptools',
           'plone.app.registry',
+          'future',
           # -*- Extra requirements: -*-
       ],
       extras_require={
