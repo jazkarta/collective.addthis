@@ -1,0 +1,33 @@
+name: Run Tests
+
+on:
+  - push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["2.7", "3.8"]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Cache eggs
+      uses: actions/cache@v2
+      with:
+        path: |
+          eggs
+          buildout-cache
+        key: eggs-${{ matrix.python-version }}-${{ hashFiles('travis.cfg') }}
+        restore-keys: eggs-${{ matrix.python-version }}
+    - name: Install zc.buildout
+      run: pip install zc.buildout==2.13.3 setuptools==42.0.2
+    - name: Bootstrap zc.buildout
+      run: buildout bootstrap
+    - name: Run buildout
+      run: bin/buildout -c travis.cfg
+    - name: Run tests
+      run: bin/pytest
