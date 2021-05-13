@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-import unittest2 as unittest
 from collective.addthis.testing import ADDTHIS_INTEGRATION_TESTING
 from collective.addthis.testing import ADDTHIS_FUNCTIONAL_TESTING
 from collective.addthis.interfaces import IAddThisSettings
 from Products.CMFCore.utils import getToolByName
 from plone.registry import Registry
 from plone.testing.z2 import Browser
+import unittest
 
 
 class IntegrationTest(unittest.TestCase):

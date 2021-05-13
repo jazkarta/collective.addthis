@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-import unittest2 as unittest
+import unittest
 import transaction
 from collective.addthis.testing import ADDTHIS_INTEGRATION_TESTING,\
                                        ADDTHIS_FUNCTIONAL_TESTING
