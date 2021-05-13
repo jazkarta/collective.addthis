@@ -2,7 +2,7 @@
 import json
 import urllib
 import socket
-from zope.interface import implements, alsoProvides
+from zope.interface import implementer, alsoProvides
 from zope import component
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm, SimpleVocabulary
@@ -14,9 +14,9 @@ from plone.registry.interfaces import IRegistry
 SHARING = "http://cache.addthiscdn.com/services/v1/sharing.en.json"
 
 
+@implementer(ISocialMedia)
 class SocialMediaSources(object):
     """Provides a list of Social Media supported by the addthis.com service."""
-    implements(ISocialMedia)
 
     def _services(self):
         """Returns the services using that addthis API"""

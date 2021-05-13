@@ -31,4 +31,4 @@ jobs:
     - name: Run buildout
       run: bin/buildout -c travis.cfg
     - name: Run tests
-      run: bin/pytest
+      run: bin/test

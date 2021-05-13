@@ -16,8 +16,13 @@ def remove_old_browserlayer(setuptool):
     try:
         utils.unregister_layer('collective.addthis')
         logger.info('Unregistered old browserlayer')
-    except KeyError, e:
+    except KeyError as e:
         logger.error(str(e))
+
+try:
+    unicode
+except NameError:
+    unicode = str
 
 
 def migrate_controlpanel(setuptool):

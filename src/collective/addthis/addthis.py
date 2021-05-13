@@ -92,13 +92,13 @@ class AddThisViewlet(common.ViewletBase):
 
     def javascript_url(self):
         username = self._settings.addthis_account_name
-        async = self._settings.addthis_load_asynchronously
+        async_ = self._settings.addthis_load_asynchronously
         script_url = self._settings.addthis_script_url
-        if username and async:
+        if username and async_:
             script_url += "#pubid=%s&amp;async=1" % username
-        elif username and not async:
+        elif username and not async_:
             script_url += "#pubid=%s" % username
-        elif not username and async:
+        elif not username and async_:
             script_url += "#async=1"
         return script_url
 

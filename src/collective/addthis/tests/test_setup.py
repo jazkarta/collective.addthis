@@ -24,11 +24,8 @@ class InstallTestCase(unittest.TestCase):
 
     layer = ADDTHIS_INTEGRATION_TESTING
 
-    def setUp(self):
-        self.portal = self.layer['portal']
-
     def test_installed(self):
-        qi = getattr(self.portal, 'portal_quickinstaller')
+        qi = getattr(self.layer['portal'], 'portal_quickinstaller')
         self.assertTrue(qi.isProductInstalled(PROJECTNAME))
 
     def test_addon_layer(self):
@@ -37,12 +34,12 @@ class InstallTestCase(unittest.TestCase):
                         'add-on layer was not installed')
 
     def test_jsregistry(self):
-        resource_ids = self.portal.portal_javascripts.getResourceIds()
+        resource_ids = self.layer['portal'].portal_javascripts.getResourceIds()
         for id in JAVASCRIPTS:
             self.assertTrue(id in resource_ids, '%s not installed' % id)
 
     def test_cssregistry(self):
-        resource_ids = self.portal.portal_css.getResourceIds()
+        resource_ids = self.layer['portal'].portal_css.getResourceIds()
         for id in CSS:
             self.assertTrue(id in resource_ids, '%s not installed' % id)
 
@@ -51,10 +48,9 @@ class UninstallTestCase(unittest.TestCase):
 
     layer = ADDTHIS_INTEGRATION_TESTING
 
-    def setUp(self):
-        self.portal = self.layer['portal']
-        setRoles(self.portal, TEST_USER_ID, ['Manager'])
-        self.qi = getattr(self.portal, 'portal_quickinstaller')
+    def setUpPloneSite(self, portal):
+        setRoles(portal, TEST_USER_ID, ['Manager'])
+        self.qi = getattr(portal, 'portal_quickinstaller')
         self.qi.uninstallProducts(products=[PROJECTNAME])
 
     def test_uninstalled(self):
@@ -66,11 +62,11 @@ class UninstallTestCase(unittest.TestCase):
                         'add-on layer was not removed')
 
     def test_jsregistry_removed(self):
-        resource_ids = self.portal.portal_javascripts.getResourceIds()
+        resource_ids = self.layer['portal'].portal_javascripts.getResourceIds()
         for id in JAVASCRIPTS:
             self.assertTrue(id not in resource_ids, '%s not removed' % id)
 
     def test_cssregistry_removed(self):
-        resource_ids = self.portal.portal_css.getResourceIds()
+        resource_ids = self.layer['portal'].portal_css.getResourceIds()
         for id in CSS:
             self.assertTrue(id not in resource_ids, '%s not removed' % id)
