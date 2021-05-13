@@ -28,7 +28,6 @@ class SocialMediaSources(object):
         for service in self._services():
             token, title = service.split('|')
             yield (token.encode('ascii'), title,)
-        raise StopIteration
 
 
 def socialMediaVocabulary(context):
