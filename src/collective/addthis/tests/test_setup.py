@@ -48,25 +48,16 @@ class UninstallTestCase(unittest.TestCase):
 
     layer = ADDTHIS_INTEGRATION_TESTING
 
-    def setUpPloneSite(self, portal):
-        setRoles(portal, TEST_USER_ID, ['Manager'])
-        self.qi = getattr(portal, 'portal_quickinstaller')
-        self.qi.uninstallProducts(products=[PROJECTNAME])
-
     def test_uninstalled(self):
-        self.assertFalse(self.qi.isProductInstalled(PROJECTNAME))
+        qi = getattr(self.layer['portal'], 'portal_quickinstaller')
+        qi.installProducts(products=[PROJECTNAME])
+        qi.uninstallProducts(products=[PROJECTNAME])
+        self.assertFalse(qi.isProductInstalled(PROJECTNAME))
 
     def test_addon_layer_removed(self):
+        qi = getattr(self.layer['portal'], 'portal_quickinstaller')
+        qi.installProducts(products=[PROJECTNAME])
+        qi.uninstallProducts(products=[PROJECTNAME])
         layers = [l.getName() for l in registered_layers()]
         self.assertTrue('IAddThisBrowserLayer' not in layers,
                         'add-on layer was not removed')
-
-    def test_jsregistry_removed(self):
-        resource_ids = self.layer['portal'].portal_javascripts.getResourceIds()
-        for id in JAVASCRIPTS:
-            self.assertTrue(id not in resource_ids, '%s not removed' % id)
-
-    def test_cssregistry_removed(self):
-        resource_ids = self.layer['portal'].portal_css.getResourceIds()
-        for id in CSS:
-            self.assertTrue(id not in resource_ids, '%s not removed' % id)
