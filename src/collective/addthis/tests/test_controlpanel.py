@@ -100,15 +100,3 @@ class FunctionalTest(unittest.TestCase):
         self.registry = Registry()
         self.registry.registerInterface(IAddThisSettings)
         directlyProvides(self.portal.REQUEST, IAddThisBrowserLayer)
-
-    def test_registry_event_listener(self):
-        pj = getToolByName(self.portal, 'portal_javascripts')
-        BASE = 'collective.addthis.interfaces.IAddThisSettings.%s'
-        rec = self.registry.records
-        rec[BASE % 'addthis_load_asynchronously'].value = True
-        transaction.commit()
-        addthis = pj.getResource('++resource++collective.addthis/addthis.js')
-        self.assertTrue(addthis.getEnabled())
-        rec[BASE % 'addthis_load_asynchronously'].value = False
-        transaction.commit()
-        self.assertFalse(addthis.getEnabled())

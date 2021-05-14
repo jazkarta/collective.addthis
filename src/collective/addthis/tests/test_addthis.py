@@ -17,18 +17,6 @@ class IntegrationTest(unittest.TestCase):
         self.registry = Registry()
         self.registry.registerInterface(IAddThisSettings)
 
-    def test_is_addthis_installed(self):
-        qi = getToolByName(self.layer['portal'], 'portal_quickinstaller')
-        self.assertTrue(qi.isProductInstalled('collective.addthis'))
-
-    def test_are_resources_registered(self):
-        js = getToolByName(self.layer['portal'], 'portal_javascripts')
-        css = getToolByName(self.layer['portal'], 'portal_css')
-        self.assertTrue('++resource++collective.addthis/addthis.js' in
-            js.getResourceIds())
-        self.assertTrue('++resource++collective.addthis/addthis.css' in
-            css.getResourceIds())
-
 
 class FunctionalTest(unittest.TestCase):
 
