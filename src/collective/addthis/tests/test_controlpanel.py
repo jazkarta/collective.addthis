@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 import unittest
 import transaction
+from builtins import bytes
 from collective.addthis.testing import ADDTHIS_INTEGRATION_TESTING,\
                                        ADDTHIS_FUNCTIONAL_TESTING
 from collective.addthis.interfaces import IAddThisSettings,\
@@ -13,6 +14,12 @@ from zope.interface import directlyProvides
 from plone.registry.interfaces import IRegistry
 from plone.registry import Registry
 from Products.CMFCore.utils import getToolByName
+
+
+try:
+    unicode
+except NameError:
+    unicode = str
 
 
 class IntegrationTest(unittest.TestCase):
@@ -79,7 +86,7 @@ class IntegrationTest(unittest.TestCase):
         sources = socialmedia.sources
 
         for (key, value) in sources:
-            self.assertTrue(isinstance(key, str))
+            self.assertTrue(isinstance(key, bytes))
             self.assertTrue(isinstance(value, unicode))
 
 

@@ -51,12 +51,7 @@ class SocialMediaUpdater(BrowserView):
         services = []
 
         for service in raw_services:
-            value = '%s|%s' % (service['code'], service['name'])
-            if not isinstance(value, unicode):
-                try:
-                    value = unicode(value, 'utf-8')
-                except TypeError:
-                    value = value.encode('ascii', 'ignore')
+            value = u'%s|%s' % (service['code'], service['name'])
             services.append(value)
 
         registry = component.queryUtility(IRegistry)
