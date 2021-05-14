@@ -11,7 +11,7 @@ from Products.Five.browser import BrowserView
 from plone.registry.interfaces import IRegistry
 
 
-SHARING = "http://cache.addthiscdn.com/services/v1/sharing.en.json"
+SHARING = "https://cache.addthiscdn.com/services/v1/sharing.en.json"
 
 
 @implementer(ISocialMedia)

@@ -38,14 +38,14 @@ class IAddThisSettings(Interface):
         description=_(u"AddThis bookmark URL. Usually there is no need to "
                       "change this."),
         required=False,
-        default="http://www.addthis.com/bookmark.php?v=250")
+        default="https://www.addthis.com/bookmark.php?v=250")
 
     addthis_script_url = schema.URI(
         title=_(u"AddThis JavaScript URL"),
         description=_(u"URL to AddThis javascript. Usually there is no "
                       "reason to change this."),
         required=False,
-        default="http://s7.addthis.com/js/250/addthis_widget.js")
+        default="https://s7.addthis.com/js/250/addthis_widget.js")
 
     addthis_chicklets = schema.List(
         title=_(u"Social media selection"),

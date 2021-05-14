@@ -37,5 +37,5 @@ class FunctionalTest(unittest.TestCase):
     def test_is_addthis_visible(self):
         browser = Browser(self.layer['portal'])
         browser.open(self.layer['portal'].absolute_url())
-        self.assertTrue('http://www.addthis.com/bookmark.php?v=250'\
+        self.assertTrue('https://www.addthis.com/bookmark.php?v=250'\
             in browser.contents)

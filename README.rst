@@ -3,8 +3,8 @@ Introduction
 
 .. contents::
 
-.. image:: https://secure.travis-ci.org/collective/collective.addthis.png
-    :target: http://travis-ci.org/collective/collective.addthis 
+.. image:: https://github.com/collective/collective.addthis/actions/workflows/ci.yml/badge.svg
+    :target: https://github.com/collective/collective.addthis/actions
 
 *Collective.addthis* is a simple Plone addon which brings `addthis.com`_ 
 services to Plone CMS.
@@ -24,8 +24,8 @@ suggest to check these out too:
 * `sc.social.bookmarks`_
 * `collective.sharerizer`_
 
-.. _addthis.com: http://www.addthis.com
-.. _collective.prettysociable: http://plone.org/products/collective.prettysociable
-.. _collective.plonebookmarklets: http://plone.org/products/plonebookmarklets
-.. _sc.social.bookmarks: http://plone.org/products/sc.social.bookmarks
-.. _collective.sharerizer: http://plone.org/products/collective.sharerizer
+.. _addthis.com: https://www.addthis.com
+.. _collective.prettysociable: https://pypi.org/project/collective.prettysociable
+.. _collective.plonebookmarklets: https://pypi.org/project/collective.plonebookmarklets/
+.. _sc.social.bookmarks: https://pypi.org/project/sc.social.bookmarks/
+.. _collective.sharerizer: https://pypi.org/project/collective.sharerizer

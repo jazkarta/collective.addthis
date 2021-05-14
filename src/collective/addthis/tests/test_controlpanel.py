@@ -55,9 +55,9 @@ class IntegrationTest(unittest.TestCase):
         self.assertEqual(rec[BASE % 'addthis_account_name'].value, "")
         self.assertFalse(rec[BASE % 'addthis_load_asynchronously'].value)
         self.assertEqual(rec[BASE % 'addthis_url'].value,
-            "http://www.addthis.com/bookmark.php?v=250")
+            "https://www.addthis.com/bookmark.php?v=250")
         self.assertEqual(rec[BASE % 'addthis_script_url'].value,
-            "http://s7.addthis.com/js/250/addthis_widget.js")
+            "https://s7.addthis.com/js/250/addthis_widget.js")
         self.assertEqual(rec[BASE % 'addthis_chicklets'].value, [])
         self.assertFalse(rec[BASE % 'addthis_data_track_clickback'].value)
         self.assertFalse(rec[BASE % 'addthis_data_track_addressbar'].value)
