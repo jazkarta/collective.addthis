@@ -14,6 +14,8 @@ class IntegrationTest(unittest.TestCase):
 
     def setUp(self):
         ''' Initialize the portal '''
+        qi = getattr(self.layer['portal'], 'portal_quickinstaller')
+        qi.installProducts(products=["collective.addthis"])
         self.registry = Registry()
         self.registry.registerInterface(IAddThisSettings)
 

@@ -18,9 +18,12 @@ class InstallTestCase(unittest.TestCase):
 
     def test_installed(self):
         qi = getattr(self.layer['portal'], 'portal_quickinstaller')
+        qi.installProducts(products=[PROJECTNAME])
         self.assertTrue(qi.isProductInstalled(PROJECTNAME))
 
     def test_addon_layer(self):
+        qi = getattr(self.layer['portal'], 'portal_quickinstaller')
+        qi.installProducts(products=[PROJECTNAME])
         layers = [l.getName() for l in registered_layers()]
         self.assertTrue('IAddThisBrowserLayer' in layers,
                         'add-on layer was not installed')
