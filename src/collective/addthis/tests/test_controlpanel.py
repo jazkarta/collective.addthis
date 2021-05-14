@@ -40,7 +40,6 @@ class IntegrationTest(unittest.TestCase):
     def test_addthis_controlpanel_view(self):
         view = getMultiAdapter((self.portal, self.portal.REQUEST),
                                name=u'addthis-settings')
-        view = view.__of__(self.portal)
         self.assertTrue(view)
 
     def test_controlpanel_view_is_protected(self):
@@ -73,7 +72,6 @@ class IntegrationTest(unittest.TestCase):
     def test_addthis_socialmediasources_updater_view(self):
         view = getMultiAdapter((self.portal, self.portal.REQUEST),
                                name=u'addthis-social-media-updater')
-        view = view.__of__(self.portal)
         self.assertTrue(view)
         self.assertTrue(view())
 
